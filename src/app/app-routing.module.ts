@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ErrorComponent } from './common/error/error.component';
+import { AuthGuard } from './auth/auth.guard';
 const routes: Routes = [
   {
     path: 'login',
@@ -8,6 +9,7 @@ const routes: Routes = [
   },
   {
     path: 'admin',
+    canLoad: [AuthGuard],
     loadChildren: './admin/admin.module#AdminModule'
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
