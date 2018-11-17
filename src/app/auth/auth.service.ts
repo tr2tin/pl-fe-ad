@@ -7,10 +7,16 @@ import { LocalStorageService } from '../common/service/local-storage.service';
 export class AuthService {
   isLoggedIn = false;
   redirectUrl = '/login';
-  constructor(private localStorage: LocalStorageService) { }
+  constructor(private lStorage: LocalStorageService) { }
+
+  isLogged() {
+    console.log(this.getToken());
+    
+    return this.getToken() !== undefined;
+  }
 
   getToken() {
-    return localStorage.getItem('token');
+    return this.lStorage.get('token');
   }
 
 }

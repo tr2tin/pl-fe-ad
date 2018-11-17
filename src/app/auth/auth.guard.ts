@@ -6,6 +6,7 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
   NavigationExtras,
+  Router,
   Route
 } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -14,8 +15,12 @@ import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
-  constructor(private authService: AuthService) {
+export class AuthGuard implements
+  CanActivate,
+  CanActivateChild,
+  CanLoad {
+  constructor(private authService: AuthService,
+    private router: Router) {
 
   }
   canActivate(
@@ -32,11 +37,13 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
   canLoad(route: Route): boolean | Observable<boolean> | Promise<boolean> {
     let url = `/${route.path}`;
+    console.log(url);
+    console.log(route.path);
     return this.checkLogin(url);
   }
 
   checkLogin(url: string): boolean {
-    if (this.authService.isLoggedIn) { return true; }
+    if (this.authService.isLogged()) { return true; }
 
     // Store the attempted URL for redirecting
     this.authService.redirectUrl = url;
@@ -53,6 +60,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
     // Navigate to the login page with extras
     this.router.navigate(['/login'], navigationExtras);
+
     return false;
   }
 

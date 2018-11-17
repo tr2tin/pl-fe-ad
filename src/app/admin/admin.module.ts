@@ -11,12 +11,13 @@ import { AdminRoutingModule } from './admin-routing.module';
     AdminRoutingModule
   ],
   providers: [
-    { provide: LocationStrategy, useClass: HashLocationStrategy },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true
-    }
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
+    // ,
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: TokenInterceptor,
+    //   multi: true
+    // }
   ]
 })
 export class AdminModule { }
