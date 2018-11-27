@@ -15,8 +15,18 @@
 <!-- <canvas class="my-4" id="myChart" width="900" height="380"></canvas> -->
 
 <h2>Section title</h2>
-
 <div class="table-responsive">
-  <dx-data-grid id="gridContainer" [dataSource]="customers" [columns]="['CompanyName', 'City', 'State', 'Phone', 'Fax']" [showBorders]="true">
+  <dx-data-grid id="gridContainer" [dataSource]="customers" [showBorders]="true">
+    <dxo-search-panel [visible]="true" [width]="240" placeholder="Search..."></dxo-search-panel>
+    <dxo-remote-operations [sorting]="true" [paging]="true" [filtering]="true">
+    </dxo-remote-operations>
+    <dxo-paging [pageSize]="10"></dxo-paging>
+    <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 50]"></dxo-pager>
+    <dxi-column dataField="firstname"></dxi-column>
+    <dxi-column dataField="lastname"></dxi-column>
+    <dxi-column dataField="phone"></dxi-column>
+    <dxi-column dataField="username"></dxi-column>
+    <dxi-column dataField="email"></dxi-column>
+    <dxi-column dataField="created_at" dataType='date'></dxi-column>
   </dx-data-grid>
 </div>
