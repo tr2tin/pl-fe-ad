@@ -16,10 +16,13 @@
 
 <h2>Section title</h2>
 <div class="table-responsive">
-  <dx-data-grid id="gridContainer" [dataSource]="customers" [showBorders]="true">
+  <dx-data-grid id="gridContainer" [dataSource]="customers" [showBorders]="true" 
+  [remoteOperations]="true"
+  [wordWrapEnabled]="true">
     <dxo-search-panel [visible]="true" [width]="240" placeholder="Search..."></dxo-search-panel>
-    <dxo-remote-operations [sorting]="true" [paging]="true" [filtering]="true">
-    </dxo-remote-operations>
+    <dxo-scrolling mode="virtual" rowRenderingMode="virtual" ></dxo-scrolling>
+    <!-- <dxo-remote-operations [sorting]="true" [paging]="true" [filtering]="true">
+    </dxo-remote-operations> -->
     <dxo-paging [pageSize]="10"></dxo-paging>
     <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 50]"></dxo-pager>
     <dxi-column dataField="firstname"></dxi-column>

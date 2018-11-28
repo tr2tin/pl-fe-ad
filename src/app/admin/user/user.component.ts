@@ -23,6 +23,7 @@ export class UserComponent implements OnInit {
 
         params += 'skip=' + loadOptions.skip || 0;
         params += '&take=' + loadOptions.take || 10;
+        params += '&requireTotalCount=' + (loadOptions.requireTotalCount || false);
 
         if (loadOptions.sort) {
           params += '&orderby=' + loadOptions.sort[0].selector;
