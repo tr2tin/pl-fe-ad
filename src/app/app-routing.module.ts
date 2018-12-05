@@ -13,7 +13,7 @@ const routes: Routes = [
     canLoad: [AuthGuard],
     loadChildren: './admin/admin.module#AdminModule'
   },
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'admin', pathMatch: 'full' },
   { path: '**', component: ErrorComponent }];
 
 @NgModule({

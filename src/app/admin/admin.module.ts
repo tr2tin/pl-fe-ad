@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AdminComponent } from './admin.component';
 import { AdminRoutingModule } from './admin-routing.module';
@@ -8,6 +8,7 @@ import { AdminRoutingModule } from './admin-routing.module';
   declarations: [AdminComponent],
   imports: [
     CommonModule,
+    HttpClientModule,
     AdminRoutingModule
   ],
   providers: [
